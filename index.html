@@ -1,39 +1,200 @@
-<!DOCTYPE html> 
-<html lang="pt-br"> 
-  <head> 
-    <meta charset="UTF-8" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-    <title>Flashcards de Mitos e Verdades</title> 
-  </head> 
-  <body> 
-    <header> 
-  <h1>Confere Aí</h1> 
-  <nav> 
-    <a href="#">Início</a> 
-  </nav> 
-</header> 
- 
-    <main> 
-  <h2>Descubra a verdade passando o mouse</h2> 
-  <section> 
-    <article> 
-      <div> 
-        <div> 
-          <img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849" alt="Pinguim" class="cartao-imagem"> 
-          <p>Pinguins conseguem voar como pássaros!</p> 
-        </div> 
-        <div class="cartao-verso"> 
-          <img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849" alt="Pinguim" class="cartao-imagem"> 
-          <p>Pinguins não voam, mas são excelentes nadadores.</p> 
-        </div> 
-      </div> 
-    </article> 
-  </section> 
-</main> 
-    
- 
-    <footer> 
-  <p>Projeto feito por [Seu Nome]</p> 
-</footer> 
-  </body> 
-</html> 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confere Aí | Flashcards de Mitos e Verdades</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            background:#eef3f8;
+            color:#222;
+            display:flex;
+            flex-direction:column;
+            min-height:100vh;
+        }
+
+        .cabecalho{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 50px;
+            background:#0f172a;
+            color:white;
+            box-shadow:0 3px 12px rgba(0,0,0,.2);
+        }
+
+        .cabecalho h1{
+            font-size:32px;
+        }
+
+        .cabecalho a{
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+            transition:.3s;
+        }
+
+        .cabecalho a:hover{
+            color:#38bdf8;
+        }
+
+        main{
+            flex:1;
+            max-width:1200px;
+            width:100%;
+            margin:auto;
+            padding:40px 20px;
+        }
+
+        main h2{
+            text-align:center;
+            margin-bottom:40px;
+            font-size:30px;
+            color:#0f172a;
+        }
+
+        section{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+        }
+
+        .cartao{
+            width:320px;
+            background:white;
+            border-radius:18px;
+            overflow:hidden;
+            box-shadow:0 8px 20px rgba(0,0,0,.15);
+            transition:.35s;
+        }
+
+        .cartao:hover{
+            transform:translateY(-10px);
+            box-shadow:0 15px 30px rgba(0,0,0,.25);
+        }
+
+        .cartao-imagem{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+        }
+
+        .cartao-frente,
+        .cartao-verso{
+            padding:20px;
+        }
+
+        .cartao-frente p,
+        .cartao-verso p{
+            text-align:center;
+            font-size:18px;
+            line-height:1.5;
+        }
+
+        .cartao-verso{
+            background:#f8fafc;
+            border-top:1px solid #ddd;
+        }
+
+        footer{
+            background:#0f172a;
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+
+        @media(max-width:768px){
+
+            .cabecalho{
+                flex-direction:column;
+                gap:15px;
+            }
+
+            main h2{
+                font-size:24px;
+            }
+
+            .cartao{
+                width:100%;
+                max-width:350px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="cabecalho">
+    <h1>Confere Aí</h1>
+
+    <nav>
+        <a href="#">Início</a>
+    </nav>
+</header>
+
+<main>
+
+    <h2>Descubra a verdade passando o mouse</h2>
+
+    <section>
+
+        <article class="cartao">
+
+            <div class="cartao-frente">
+                <img class="cartao-imagem"
+                src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849"
+                alt="Pinguim">
+
+                <p><strong>Mito:</strong><br>Pinguins conseguem voar como pássaros!</p>
+            </div>
+
+            <div class="cartao-verso">
+                <img class="cartao-imagem"
+                src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849"
+                alt="Pinguim">
+
+                <p><strong>Verdade:</strong><br>Pinguins não voam, mas são excelentes nadadores.</p>
+            </div>
+
+        </article>
+
+        <article class="cartao">
+
+            <div class="cartao-frente">
+                <img class="cartao-imagem"
+                src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849"
+                alt="Pinguim">
+
+                <p><strong>Mito:</strong><br>Pinguins conseguem voar como pássaros!</p>
+            </div>
+
+            <div class="cartao-verso">
+                <img class="cartao-imagem"
+                src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849"
+                alt="Pinguim">
+
+                <p><strong>Verdade:</strong><br>Pinguins não voam, mas são excelentes nadadores.</p>
+            </div>
+
+        </article>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 • Projeto Confere Aí • Desenvolvido por ALAN</p>
+</footer>
+
+</body>
+</html>
