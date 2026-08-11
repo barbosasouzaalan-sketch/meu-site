@@ -1,200 +1,405 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confere Aí | Flashcards de Mitos e Verdades</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<title>Confere Aí | Mitos e Verdades</title>
 
-        body{
-            font-family:Arial, Helvetica, sans-serif;
-            background:#eef3f8;
-            color:#222;
-            display:flex;
-            flex-direction:column;
-            min-height:100vh;
-        }
+<style>
 
-        .cabecalho{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:20px 50px;
-            background:#0f172a;
-            color:white;
-            box-shadow:0 3px 12px rgba(0,0,0,.2);
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .cabecalho h1{
-            font-size:32px;
-        }
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#eef5fb;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
 
-        .cabecalho a{
-            color:white;
-            text-decoration:none;
-            font-weight:bold;
-            transition:.3s;
-        }
 
-        .cabecalho a:hover{
-            color:#38bdf8;
-        }
+.cabecalho{
+    background:#0f172a;
+    color:white;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
 
-        main{
-            flex:1;
-            max-width:1200px;
-            width:100%;
-            margin:auto;
-            padding:40px 20px;
-        }
 
-        main h2{
-            text-align:center;
-            margin-bottom:40px;
-            font-size:30px;
-            color:#0f172a;
-        }
+.cabecalho h1{
+    font-size:32px;
+}
 
-        section{
-            display:flex;
-            justify-content:center;
-            gap:30px;
-            flex-wrap:wrap;
-        }
 
-        .cartao{
-            width:320px;
-            background:white;
-            border-radius:18px;
-            overflow:hidden;
-            box-shadow:0 8px 20px rgba(0,0,0,.15);
-            transition:.35s;
-        }
+.cabecalho a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
 
-        .cartao:hover{
-            transform:translateY(-10px);
-            box-shadow:0 15px 30px rgba(0,0,0,.25);
-        }
 
-        .cartao-imagem{
-            width:100%;
-            height:220px;
-            object-fit:cover;
-        }
+main{
+    flex:1;
+    padding:40px;
+}
 
-        .cartao-frente,
-        .cartao-verso{
-            padding:20px;
-        }
 
-        .cartao-frente p,
-        .cartao-verso p{
-            text-align:center;
-            font-size:18px;
-            line-height:1.5;
-        }
+main h2{
+    text-align:center;
+    color:#0f172a;
+    margin-bottom:40px;
+    font-size:30px;
+}
 
-        .cartao-verso{
-            background:#f8fafc;
-            border-top:1px solid #ddd;
-        }
 
-        footer{
-            background:#0f172a;
-            color:white;
-            text-align:center;
-            padding:20px;
-        }
+.container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+}
 
-        @media(max-width:768px){
 
-            .cabecalho{
-                flex-direction:column;
-                gap:15px;
-            }
+/* CARTÃO */
 
-            main h2{
-                font-size:24px;
-            }
+.cartao{
+    width:300px;
+    height:380px;
+    perspective:1000px;
+}
 
-            .cartao{
-                width:100%;
-                max-width:350px;
-            }
 
-        }
-    </style>
+.conteudo{
+    width:100%;
+    height:100%;
+    position:relative;
+    transition:.6s;
+    transform-style:preserve-3d;
+}
+
+
+.cartao:hover .conteudo{
+    transform:rotateY(180deg);
+}
+
+
+.frente,
+.verso{
+    position:absolute;
+    width:100%;
+    height:100%;
+    backface-visibility:hidden;
+    border-radius:18px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+
+.frente img,
+.verso img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+
+.frente p,
+.verso p{
+    padding:20px;
+    text-align:center;
+    font-size:18px;
+    line-height:1.4;
+}
+
+
+.verso{
+    transform:rotateY(180deg);
+    background:#dff6ff;
+}
+
+
+.titulo{
+    font-weight:bold;
+    color:#0f172a;
+}
+
+
+footer{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+
+@media(max-width:700px){
+
+    .cabecalho{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .cartao{
+        width:90%;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-<header class="cabecalho">
-    <h1>Confere Aí</h1>
 
-    <nav>
-        <a href="#">Início</a>
-    </nav>
+<header class="cabecalho">
+
+<h1>Confere Aí</h1>
+
+<nav>
+<a href="#">Início</a>
+</nav>
+
 </header>
+
+
 
 <main>
 
-    <h2>Descubra a verdade passando o mouse</h2>
+<h2>Passe o mouse e descubra a verdade 🐧</h2>
 
-    <section>
 
-        <article class="cartao">
+<section class="container">
 
-            <div class="cartao-frente">
-                <img class="cartao-imagem"
-                src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849"
-                alt="Pinguim">
 
-                <p><strong>Mito:</strong><br>Pinguins conseguem voar como pássaros!</p>
-            </div>
 
-            <div class="cartao-verso">
-                <img class="cartao-imagem"
-                src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849"
-                alt="Pinguim">
+<!-- CARTÃO 1 -->
 
-                <p><strong>Verdade:</strong><br>Pinguins não voam, mas são excelentes nadadores.</p>
-            </div>
+<div class="cartao">
 
-        </article>
+<div class="conteudo">
 
-        <article class="cartao">
 
-            <div class="cartao-frente">
-                <img class="cartao-imagem"
-                src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849"
-                alt="Pinguim">
+<div class="frente">
 
-                <p><strong>Mito:</strong><br>Pinguins conseguem voar como pássaros!</p>
-            </div>
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
 
-            <div class="cartao-verso">
-                <img class="cartao-imagem"
-                src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849"
-                alt="Pinguim">
+<p>
+<span class="titulo">Mito:</span><br>
+Pinguins conseguem voar como outros pássaros.
+</p>
 
-                <p><strong>Verdade:</strong><br>Pinguins não voam, mas são excelentes nadadores.</p>
-            </div>
+</div>
 
-        </article>
 
-    </section>
+<div class="verso">
+
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+
+<p>
+<span class="titulo">Verdade:</span><br>
+Pinguins não voam pelo ar, mas são excelentes nadadores.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+<!-- CARTÃO 2 -->
+
+<div class="cartao">
+
+<div class="conteudo">
+
+
+<div class="frente">
+
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+
+<p>
+<span class="titulo">Mito:</span><br>
+Todos os pinguins vivem no Polo Norte.
+</p>
+
+</div>
+
+
+<div class="verso">
+
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+
+<p>
+<span class="titulo">Verdade:</span><br>
+Pinguins vivem principalmente no Hemisfério Sul, como na Antártida.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+<!-- CARTÃO 3 -->
+
+<div class="cartao">
+
+<div class="conteudo">
+
+
+<div class="frente">
+
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+
+<p>
+<span class="titulo">Mito:</span><br>
+Pinguins comem apenas peixes.
+</p>
+
+</div>
+
+
+<div class="verso">
+
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+
+<p>
+<span class="titulo">Verdade:</span><br>
+Além de peixes, eles também comem lulas e pequenos crustáceos.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+<div class="cartao">
+
+<div class="conteudo">
+
+
+<div class="frente">
+
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+
+<p>
+<span class="titulo">Mito:</span><br>
+Pinguins são animais lentos em todos os lugares.
+</p>
+
+</div>
+
+
+<div class="verso">
+
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+
+<p>
+<span class="titulo">Verdade:</span><br>
+Na água, pinguins são rápidos e conseguem nadar grandes distâncias.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+</section>
+
 
 </main>
 
+
+
 <footer>
-    <p>© 2026 • Projeto Confere Aí • Desenvolvido por ALAN</p>
+
+<p>Projeto Confere Aí • Desenvolvido por Matias</p>
+
 </footer>
+
+
+</body>
+</html>
+<!-- CARTÃO 4 -->
+
+<div class="cartao">
+
+<div class="conteudo">
+
+
+<div class="frente">
+
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+
+<p>
+<span class="titulo">Mito:</span><br>
+Pinguins são animais lentos em todos os lugares.
+</p>
+
+</div>
+
+
+<div class="verso">
+
+<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+
+<p>
+<span class="titulo">Verdade:</span><br>
+Na água, pinguins são rápidos e conseguem nadar grandes distâncias.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<p>Projeto Confere Aí • Desenvolvido por Matias</p>
+
+</footer>
+
 
 </body>
 </html>
