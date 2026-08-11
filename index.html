@@ -1,407 +1,757 @@
-!DOCTYPE html>
+```html
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Confere Aí | Mitos e Verdades</title>
+    <meta
+        name="description"
+        content="Confere Aí — descubra a verdade por trás de mitos sobre pinguins."
+    >
 
-<style>
+    <title>Confere Aí | Mitos e Verdades</title>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <style>
+        /* =========================================================
+           RESET
+        ========================================================= */
 
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#eef5fb;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        html {
+            scroll-behavior: smooth;
+        }
 
-.cabecalho{
-    background:#0f172a;
-    color:white;
-    padding:20px 50px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 4px 10px rgba(0,0,0,.2);
-}
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
 
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #123b52 0%,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    #082b3d 0%,
+                    transparent 35%
+                ),
+                #050b12;
 
-.cabecalho h1{
-    font-size:32px;
-}
+            color: #e8f7ff;
+        }
 
+        /* =========================================================
+           CABEÇALHO
+        ========================================================= */
 
-.cabecalho a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
+        header {
+            width: 100%;
+            padding: 20px 7%;
 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-main{
-    flex:1;
-    padding:40px;
-}
+            background: rgba(5, 15, 24, 0.88);
+            backdrop-filter: blur(12px);
 
+            border-bottom: 1px solid rgba(90, 210, 255, 0.12);
 
-main h2{
-    text-align:center;
-    color:#0f172a;
-    margin-bottom:40px;
-    font-size:30px;
-}
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
-.container{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:30px;
-}
+            font-size: 1.5rem;
+            font-weight: 800;
 
+            color: #dff8ff;
+        }
 
-/* CARTÃO */
+        .logo span {
+            font-size: 1.8rem;
+        }
 
-.cartao{
-    width:300px;
-    height:380px;
-    perspective:1000px;
-}
+        nav a {
+            color: #b8e8f7;
+            text-decoration: none;
+            font-weight: 600;
 
+            padding: 10px 18px;
+            border-radius: 30px;
 
-.conteudo{
-    width:100%;
-    height:100%;
-    position:relative;
-    transition:.6s;
-    transform-style:preserve-3d;
-}
+            transition: 0.3s ease;
+        }
 
+        nav a:hover {
+            color: white;
+            background: #087ea4;
+        }
 
-.cartao:hover .conteudo{
-    transform:rotateY(180deg);
-}
+        /* =========================================================
+           HERO
+        ========================================================= */
 
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px 45px;
+            text-align: center;
+        }
 
-.frente,
-.verso{
-    position:absolute;
-    width:100%;
-    height:100%;
-    backface-visibility:hidden;
-    border-radius:18px;
-    overflow:hidden;
-    background:white;
-    box-shadow:0 8px 20px rgba(0,0,0,.2);
-}
+        .tag {
+            display: inline-block;
 
+            padding: 8px 16px;
+            margin-bottom: 18px;
 
-.frente img,
-.verso img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
+            background: rgba(8, 126, 164, 0.18);
+            color: #55d7ff;
 
+            border: 1px solid rgba(85, 215, 255, 0.3);
+            border-radius: 50px;
 
-.frente p,
-.verso p{
-    padding:20px;
-    text-align:center;
-    font-size:18px;
-    line-height:1.4;
-}
+            font-size: 0.85rem;
+            font-weight: 700;
 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-.verso{
-    transform:rotateY(180deg);
-    background:#dff6ff;
-}
+        .hero h1 {
+            margin-bottom: 18px;
 
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.05;
 
-.titulo{
-    font-weight:bold;
-    color:#0f172a;
-}
+            color: #f0fbff;
+        }
 
+        .hero h1 span {
+            color: #22c7f5;
+        }
 
-footer{
-    background:#0f172a;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto;
 
+            color: #91b5c5;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
 
-@media(max-width:700px){
+        /* =========================================================
+           CARDS
+        ========================================================= */
 
-    .cabecalho{
-        flex-direction:column;
-        gap:15px;
-    }
+        .cards-container {
+            width: min(1200px, 92%);
+            margin: 0 auto;
 
-    .cartao{
-        width:90%;
-    }
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
 
-}
+            padding: 30px 0 80px;
+        }
 
-</style>
+        .card {
+            height: 450px;
 
+            perspective: 1200px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            transform-style: preserve-3d;
+
+            transition:
+                transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+
+            border-radius: 24px;
+        }
+
+        .card:hover .card-inner,
+        .card.virado .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            border-radius: 24px;
+
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.45);
+
+            background: #0d1924;
+
+            border: 1px solid rgba(111, 215, 245, 0.1);
+        }
+
+        /* =========================================================
+           FRENTE
+        ========================================================= */
+
+        .card-front {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 260px;
+
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.5s ease;
+
+            filter: brightness(0.8);
+        }
+
+        .card:hover .image-container img {
+            transform: scale(1.07);
+            filter: brightness(0.95);
+        }
+
+        .badge {
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            padding: 7px 12px;
+
+            background: rgba(4, 15, 24, 0.88);
+            color: #58d8ff;
+
+            border: 1px solid rgba(88, 216, 255, 0.2);
+
+            border-radius: 30px;
+
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        .card-content {
+            padding: 24px;
+
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-number {
+            color: #22c7f5;
+
+            font-size: 0.8rem;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
+        }
+
+        .card-content h2 {
+            margin-bottom: 12px;
+
+            color: #eafaff;
+            font-size: 1.35rem;
+        }
+
+        .card-content p {
+            color: #91adba;
+            line-height: 1.5;
+        }
+
+        .mouse-tip {
+            margin-top: auto;
+            padding-top: 15px;
+
+            color: #27c8f5;
+
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           VERSO
+        ========================================================= */
+
+        .card-back {
+            transform: rotateY(180deg);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #061c2b,
+                    #087ea4
+                );
+
+            color: white;
+        }
+
+        .truth-icon {
+            width: 75px;
+            height: 75px;
+
+            margin-bottom: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            font-size: 2.2rem;
+        }
+
+        .truth-label {
+            margin-bottom: 12px;
+
+            font-size: 0.8rem;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            color: #aeeeff;
+        }
+
+        .card-back h2 {
+            margin-bottom: 15px;
+
+            font-size: 1.5rem;
+        }
+
+        .card-back p {
+            color: #d7f5ff;
+
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .truth {
+            margin-top: 22px;
+
+            padding: 9px 18px;
+
+            border-radius: 30px;
+
+            background: #e8fbff;
+            color: #087ea4;
+
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           RODAPÉ
+        ========================================================= */
+
+        footer {
+            padding: 30px 20px;
+
+            text-align: center;
+
+            background: #030911;
+            color: #7fa9b9;
+
+            border-top: 1px solid rgba(90, 210, 255, 0.1);
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding-top: 55px;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+                width: 90%;
+            }
+
+            .card {
+                height: 450px;
+            }
+
+            nav a {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <header>
+        <div class="logo">
+            <span>🐧</span>
+            Confere Aí
+        </div>
 
-<header class="cabecalho">
+        <nav>
+            <a href="#curiosidades">Curiosidades</a>
+        </nav>
+    </header>
 
-<h1>Confere Aí</h1>
+    <main>
 
-<nav>
-<a href="#">Início</a>
-</nav>
+        <section class="hero">
+            <span class="tag">🐧 Mitos e Verdades</span>
 
-</header>
+            <h1>
+                O que é <span>verdade</span> sobre os pinguins?
+            </h1>
 
+            <p>
+                Passe o mouse sobre os cards e descubra a verdade
+                por trás de alguns dos maiores mitos sobre esses
+                animais incríveis.
+            </p>
+        </section>
 
+        <section class="cards-container" id="curiosidades">
 
-<main>
+            <!-- CARD 01 -->
+            <article class="card">
+                <div class="card-inner">
 
-<h2>Passe o mouse e descubra a verdade 🐧</h2>
+                    <div class="card-front">
 
+                        <div class="image-container">
+                            <img
+                                src="https://loremflickr.com/800/600/penguin?lock=1"
+                                alt="Pinguim"
+                            >
 
-<section class="container">
+                            <span class="badge">MITO</span>
+                        </div>
 
+                        <div class="card-content">
 
+                            <span class="card-number">
+                                Curiosidade 01
+                            </span>
 
-<!-- CARTÃO 1 -->
+                            <h2>
+                                Pinguins podem voar?
+                            </h2>
 
-<div class="cartao">
+                            <p>
+                                Os pinguins seriam aves capazes de voar
+                                normalmente, assim como outras espécies.
+                            </p>
 
-<div class="conteudo">
+                            <span class="mouse-tip">
+                                Passe o mouse para conferir
+                            </span>
 
+                        </div>
+                    </div>
 
-<div class="frente">
+                    <div class="card-back">
 
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+                        <div class="truth-icon">❌</div>
 
-<p>
-<span class="titulo">Mito:</span><br>
-Pinguins conseguem voar como outros pássaros.
-</p>
+                        <span class="truth-label">
+                            A verdade
+                        </span>
 
-</div>
+                        <h2>
+                            Pinguins não voam!
+                        </h2>
 
+                        <p>
+                            Apesar de serem aves, os pinguins possuem
+                            asas adaptadas para nadar. Eles são excelentes
+                            nadadores, mas não conseguem voar.
+                        </p>
 
-<div class="verso">
+                        <span class="truth">
+                            ✓ VERDADE CONFIRMADA
+                        </span>
 
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+                    </div>
 
-<p>
-<span class="titulo">Verdade:</span><br>
-Pinguins não voam pelo ar, mas são excelentes nadadores.
-</p>
+                </div>
+            </article>
 
-</div>
 
+            <!-- CARD 02 -->
+            <article class="card">
+                <div class="card-inner">
 
-</div>
+                    <div class="card-front">
 
-</div>
+                        <div class="image-container">
+                            <img
+                                src="https://loremflickr.com/800/600/penguin?lock=2"
+                                alt="Pinguim na neve"
+                            >
 
+                            <span class="badge">MITO</span>
+                        </div>
 
+                        <div class="card-content">
 
+                            <span class="card-number">
+                                Curiosidade 02
+                            </span>
 
-<!-- CARTÃO 2 -->
+                            <h2>
+                                Todos os pinguins vivem no Polo Norte!
+                            </h2>
 
-<div class="cartao">
+                            <p>
+                                Os pinguins seriam animais exclusivos
+                                das regiões congeladas do Ártico.
+                            </p>
 
-<div class="conteudo">
+                            <span class="mouse-tip">
+                                Passe o mouse para conferir
+                            </span>
 
+                        </div>
+                    </div>
 
-<div class="frente">
+                    <div class="card-back">
 
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+                        <div class="truth-icon">🌎</div>
 
-<p>
-<span class="titulo">Mito:</span><br>
-Todos os pinguins vivem no Polo Norte.
-</p>
+                        <span class="truth-label">
+                            A verdade
+                        </span>
 
-</div>
+                        <h2>
+                            Eles vivem no Hemisfério Sul!
+                        </h2>
 
+                        <p>
+                            Pinguins são encontrados principalmente no
+                            Hemisfério Sul. Algumas espécies vivem em
+                            regiões mais quentes, como a África do Sul
+                            e a América do Sul.
+                        </p>
 
-<div class="verso">
+                        <span class="truth">
+                            ✓ VERDADE CONFIRMADA
+                        </span>
 
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+                    </div>
 
-<p>
-<span class="titulo">Verdade:</span><br>
-Pinguins vivem principalmente no Hemisfério Sul, como na Antártida.
-</p>
+                </div>
+            </article>
 
-</div>
 
+            <!-- CARD 03 -->
+            <article class="card">
+                <div class="card-inner">
 
-</div>
+                    <div class="card-front">
 
-</div>
+                        <div class="image-container">
+                            <img
+                                src="https://loremflickr.com/800/600/penguin?lock=3"
+                                alt="Pinguim caminhando"
+                            >
 
+                            <span class="badge">MITO</span>
+                        </div>
 
+                        <div class="card-content">
 
+                            <span class="card-number">
+                                Curiosidade 03
+                            </span>
 
-<!-- CARTÃO 3 -->
+                            <h2>
+                                Pinguins só comem peixe!
+                            </h2>
 
-<div class="cartao">
+                            <p>
+                                A alimentação dos pinguins seria composta
+                                exclusivamente por diferentes tipos de peixe.
+                            </p>
 
-<div class="conteudo">
+                            <span class="mouse-tip">
+                                Passe o mouse para conferir
+                            </span>
 
+                        </div>
+                    </div>
 
-<div class="frente">
+                    <div class="card-back">
 
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+                        <div class="truth-icon">🦑</div>
 
-<p>
-<span class="titulo">Mito:</span><br>
-Pinguins comem apenas peixes.
-</p>
+                        <span class="truth-label">
+                            A verdade
+                        </span>
 
-</div>
+                        <h2>
+                            A dieta é mais variada!
+                        </h2>
 
+                        <p>
+                            Peixes são importantes para muitas espécies,
+                            mas pinguins também podem comer krill, lulas
+                            e outros pequenos animais marinhos.
+                        </p>
 
-<div class="verso">
+                        <span class="truth">
+                            ✓ VERDADE CONFIRMADA
+                        </span>
 
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+                    </div>
 
-<p>
-<span class="titulo">Verdade:</span><br>
-Além de peixes, eles também comem lulas e pequenos crustáceos.
-</p>
+                </div>
+            </article>
 
-</div>
 
+            <!-- CARD 04 -->
+            <article class="card">
+                <div class="card-inner">
 
-</div>
+                    <div class="card-front">
 
-</div>
+                        <div class="image-container">
+                            <img
+                                src="https://loremflickr.com/800/600/penguin?lock=4"
+                                alt="Pinguim em ambiente gelado"
+                            >
 
+                            <span class="badge">MITO</span>
+                        </div>
 
+                        <div class="card-content">
 
+                            <span class="card-number">
+                                Curiosidade 04
+                            </span>
 
-<div class="cartao">
+                            <h2>
+                                Pinguins vivem apenas no frio extremo!
+                            </h2>
 
-<div class="conteudo">
+                            <p>
+                                Todos os pinguins precisam de temperaturas
+                                congelantes para sobreviver.
+                            </p>
 
+                            <span class="mouse-tip">
+                                Passe o mouse para conferir
+                            </span>
 
-<div class="frente">
+                        </div>
+                    </div>
 
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+                    <div class="card-back">
 
-<p>
-<span class="titulo">Mito:</span><br>
-Pinguins são animais lentos em todos os lugares.
-</p>
+                        <div class="truth-icon">☀️</div>
 
-</div>
+                        <span class="truth-label">
+                            A verdade
+                        </span>
 
+                        <h2>
+                            Existem pinguins em lugares quentes!
+                        </h2>
 
-<div class="verso">
+                        <p>
+                            Algumas espécies vivem em regiões de clima
+                            relativamente quente. O pinguim-de-Galápagos,
+                            por exemplo, vive próximo à linha do Equador.
+                        </p>
 
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
+                        <span class="truth">
+                            ✓ VERDADE CONFIRMADA
+                        </span>
 
-<p>
-<span class="titulo">Verdade:</span><br>
-Na água, pinguins são rápidos e conseguem nadar grandes distâncias.
-</p>
+                    </div>
 
-</div>
+                </div>
+            </article>
 
+        </section>
 
-</div>
+    </main>
 
-</div>
-
-
-
-
-</section>
-
-
-</main>
-
-
-
-<footer>
-
-<p>Projeto Confere Aí • Desenvolvido por alan
-    
-</p>
-
-</footer>
-
+    <footer>
+        <p>
+            <strong>🐧 Confere Aí</strong> — Mitos e Verdades sobre pinguins.
+        </p>
+    </footer>
 
 </body>
 </html>
-<!-- CARTÃO 4 -->
+```
 
-<div class="cartao">
-
-<div class="conteudo">
-
-
-<div class="frente">
-
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
-
-<p>
-<span class="titulo">Mito:</span><br>
-Pinguins são animais lentos em todos os lugares.
-</p>
-
-</div>
-
-
-<div class="verso">
-
-<img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm1012723121410486.jpg?w=1900&h=2849">
-
-<p>
-<span class="titulo">Verdade:</span><br>
-Na água, pinguins são rápidos e conseguem nadar grandes distâncias.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-
-</section>
-
-
-</main>
-
-
-
-<footer>
-
-<p>Projeto Confere Aí • Desenvolvido por Matias</p>
-
-</footer>
-
-
-</body>
-</html>
